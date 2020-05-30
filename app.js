@@ -11,7 +11,7 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 // view engine setup
-app.set('view engine', 'html');
+app.set('view engine', 'njk');
 nunjucts.configure('views', {
   autoescape: true,
   express: app
