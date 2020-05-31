@@ -8,16 +8,24 @@ module.exports = {
   },
 
   store: async (req, res) => {
-    const { name } = req.body
-    await Category.create({ name })
+    try {
+      const { name } = req.body
+      await Category.create({ name })
+    } catch (error) {
+      console.log(error)
+    }
 
     res.redirect('/admin/categories')
   },
 
   update: async (req, res) => {
-    let category = await Category.findOne({_id: req.params.id})
-    category.name = req.body.name
-    await category.save()
+    try {
+      let category = await Category.findOne({_id: req.params.id})
+      category.name = req.body.name
+      await category.save()
+    } catch (error) {
+      console.log(error)
+    }
 
     res.redirect('/admin/categories')
   },

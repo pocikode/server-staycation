@@ -54,7 +54,7 @@
           <form action="/admin/categories" method="post">
             <div class="form-group">
               <label for="inputName">Name</label>
-              <input type="text" name="name" id="inputName" class="form-control">
+              <input type="text" name="name" id="inputName" class="form-control" required>
             </div>
             <div class="form-group text-left">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -81,7 +81,7 @@
             <input type="hidden" name="_method" value="PUT">
             <div class="form-group">
               <label for="inputEditName">Name</label>
-              <input type="text" name="name" id="inputEditName" class="form-control" value="">
+              <input type="text" name="name" id="inputEditName" class="form-control" value="" required>
             </div>
             <div class="form-group text-left">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
