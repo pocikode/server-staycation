@@ -20,5 +20,12 @@ module.exports = {
     await category.save()
 
     res.redirect('/admin/categories')
+  },
+
+  delete: async (req, res) => {
+    let category = await Category.findOne({_id: req.params.id})
+    await category.remove()
+
+    res.redirect('/admin/categories')
   }
 }
