@@ -16,11 +16,33 @@
             <tr>
               <th>No</th>
               <th>Bank Name</th>
-              <th>Account Number</th>
               <th>Account Name</th>
+              <th>Account Number</th>
+              <th>Image</th>
               <th>Action</th>
             </tr>
           </thead>
+          <tbody>
+            {% for bank in banks %}
+              <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ bank.bank_name }}</td>
+                <td>{{ bank.account_name }}</td>
+                <td>{{ bank.account_number }}</td>
+                <td>
+                  <img src="http://localhost:3002/images/{{ bank.image }}" alt="{{ bank.bank_name }}" width="70px">
+                </td>
+                <td>
+                  <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#editModal" data-name="{{ bank.bank_name }}" data-id="{{ bank._id }}">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#deleteModal" data-name="{{ bank.bank_name }}" data-id="{{ bank._id }}">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
         </table>
       </div>
     </div>

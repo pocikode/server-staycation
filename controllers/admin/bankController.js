@@ -1,10 +1,11 @@
 const Bank = require('../../models/Bank')
 
 module.exports = {
-  index: (req, res) => {
+  index: async (req, res) => {
+    let banks = await Bank.find()
     let alert = req.flash('alert')[0]
 
-    res.render('admin/bank/index', { alert })
+    res.render('admin/bank/index', { banks, alert })
   },
 
   store: async (req, res) => {
