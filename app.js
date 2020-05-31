@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var nunjucts = require('nunjucks')
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser')
+var methodOverride = require('method-override')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -26,6 +28,17 @@ nunjucts.configure('views', {
   autoescape: true,
   express: app
 })
+
+// method override
+app.use(bodyParser.urlencoded())
+app.use(methodOverride(function(req, res) {
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    var method = req.body._method
+    delete req.body._method
+
+    return method
+  }
+}));
 
 app.use(logger('dev'));
 app.use(express.json());

@@ -12,5 +12,13 @@ module.exports = {
     await Category.create({ name })
 
     res.redirect('/admin/categories')
+  },
+
+  update: async (req, res) => {
+    let category = await Category.findOne({_id: req.params.id})
+    category.name = req.body.name
+    await category.save()
+
+    res.redirect('/admin/categories')
   }
 }
