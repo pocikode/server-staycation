@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const { upload } = require('../middlewares/multer')
 
 const dashboardController = require('../controllers/admin/dashboardController')
 const categoryController = require('../controllers/admin/categoryController')
@@ -14,6 +15,8 @@ router.put('/categories/:id', categoryController.update)
 router.delete('/categories/:id', categoryController.delete)
 
 router.get('/banks', bankController.index)
+router.post('/banks', upload, bankController.store)
+
 router.get('/items', itemController.index)
 router.get('/booking', bookingController.index)
 
