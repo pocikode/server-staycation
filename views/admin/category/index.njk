@@ -5,7 +5,9 @@
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addCategoryModal">Add</button>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addCategoryModal">
+        <i class="fas fa-plus"></i>
+      </button>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -17,6 +19,18 @@
               <th>Action</th>
             </tr>
           </thead>
+          <tbody>
+            {% for category in categories %}
+              <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ category.name }}</td>
+                <td>
+                  <a href="#" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
+                  <a href="#" class="btn btn-warning btn-sm"><i class="fas fa-trash"></i></a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
         </table>
       </div>
     </div>
