@@ -7,7 +7,10 @@ const itemController = require('../controllers/admin/itemController')
 const bookingController = require('../controllers/admin/bookingController')
 
 router.get('/', dashboardController.index)
+
 router.get('/categories', categoryController.index)
+router.post('/categories', categoryController.store)
+
 router.get('/banks', bankController.index)
 router.get('/items', itemController.index)
 router.get('/booking', bookingController.index)
