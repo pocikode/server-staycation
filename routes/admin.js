@@ -1,6 +1,7 @@
 const router = require('express').Router()
-const adminController = require('../controllers/adminController')
 
-router.get('/', adminController.index)
+const dashboardController = require('../controllers/admin/dashboardController')
+
+router.get('/', dashboardController.index)
 
 module.exports = router
