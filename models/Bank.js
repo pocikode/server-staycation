@@ -12,6 +12,10 @@ const bankSchema = new mongoose.Schema({
   account_number: {
     type: String,
     required: true
+  },
+  image: {
+    type: String,
+    required: true
   }
 })
 
