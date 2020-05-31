@@ -15,7 +15,7 @@ module.exports = {
         bank_name: name,
         account_name: accountName,
         account_number: accountNumber,
-        image: req.file.filename
+        image: `images/${req.file.filename}`
       })
 
       req.flash('alert', {
