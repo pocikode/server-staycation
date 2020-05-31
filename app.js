@@ -4,12 +4,21 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var nunjucts = require('nunjucks')
+var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
 
 var app = express();
+
+// connect to database
+mongoose.connect('mongodb://localhost:27017/staycation', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+})
 
 // view engine setup
 app.set('view engine', 'njk');
