@@ -71,5 +71,26 @@ module.exports = {
     }
 
     res.redirect('/admin/banks')
+  },
+
+  delete: async (req, res) => {
+    let bank = await Bank.findOne({ _id: req.params.id })
+    if (!bank) {
+      req.flash('alert', {
+        status: 'danger',
+        message: 'Bank not found'
+      })
+
+      res.redirect('/admin/banks')
+    }
+
+    fs.unlink(path.join(`public/${bank.image}`))
+
+    await bank.remove()
+    req.flash('alert', {
+      status: 'success',
+      message: 'Success delete bank'
+    })
+    res.redirect('/admin/banks')
   }
 }

@@ -17,6 +17,7 @@ router.delete('/categories/:id', categoryController.delete)
 router.get('/banks', bankController.index)
 router.post('/banks', upload, bankController.store)
 router.post('/banks/:id', upload, bankController.update)
+router.delete('/banks/:id', bankController.delete)
 
 router.get('/items', itemController.index)
 router.get('/booking', bookingController.index)

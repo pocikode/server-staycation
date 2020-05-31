@@ -50,6 +50,7 @@
 
   {% include "./modal_add.njk" %}
   {% include "./modal_edit.njk" %}
+  {% include "./modal_delete.njk" %}
 {% endblock content %}
 
 {% block styles %}
@@ -74,6 +75,13 @@
         $(this).find('#inputEditName').val(button.data('name'))
         $(this).find('#inputEditAccountName').val(button.data('account-name'))
         $(this).find('#inputEditAccountNumber').val(button.data('account-number'))
+      })
+
+      $('#deleteModal').on('show.bs.modal', (e) => {
+        let button = $(e.relatedTarget)
+
+        $(this).find('form').attr('action', '/admin/banks/' + button.data('id'))
+        $(this).find('#bankNameDelete').text(button.data('name'))
       })
     })
   </script>
