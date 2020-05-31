@@ -33,7 +33,7 @@
                   <img src="http://localhost:3002/{{ bank.image }}" alt="{{ bank.bank_name }}" width="70px">
                 </td>
                 <td>
-                  <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#editModal" data-name="{{ bank.bank_name }}" data-id="{{ bank._id }}">
+                  <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#editModal" data-name="{{ bank.bank_name }}" data-id="{{ bank._id }}" data-account-name="{{ bank.account_name }}" data-account-number="{{ bank.account_number }}">
                     <i class="fas fa-edit"></i>
                   </button>
                   <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#deleteModal" data-name="{{ bank.bank_name }}" data-id="{{ bank._id }}">
@@ -49,6 +49,7 @@
   </div>
 
   {% include "./modal_add.njk" %}
+  {% include "./modal_edit.njk" %}
 {% endblock content %}
 
 {% block styles %}
@@ -63,4 +64,17 @@
 
   <!-- Page level custom scripts -->
   <script src="/sb-admin-2/js/demo/datatables-demo.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      $('#editModal').on('show.bs.modal', (e) => {
+        let button = $(e.relatedTarget)
+
+        $(this).find('form').attr('action', '/admin/banks/' + button.data('id'))
+        $(this).find('#inputEditName').val(button.data('name'))
+        $(this).find('#inputEditAccountName').val(button.data('account-name'))
+        $(this).find('#inputEditAccountNumber').val(button.data('account-number'))
+      })
+    })
+  </script>
 {% endblock scripts %}

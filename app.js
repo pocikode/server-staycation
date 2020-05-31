@@ -9,6 +9,7 @@ var bodyParser = require('body-parser')
 var methodOverride = require('method-override')
 var session = require('express-session')
 var flash = require('connect-flash')
+var busboyBodyParser = require('busboy-body-parser')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -39,8 +40,10 @@ app.use(session({
   cookie: { maxAge: 60000 }
 }))
 
-// method override
+// body parser
 app.use(bodyParser.urlencoded())
+
+// method override
 app.use(methodOverride(function(req, res) {
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
     var method = req.body._method
