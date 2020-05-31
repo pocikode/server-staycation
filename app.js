@@ -7,6 +7,8 @@ var nunjucts = require('nunjucks')
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser')
 var methodOverride = require('method-override')
+var session = require('express-session')
+var flash = require('connect-flash')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -29,6 +31,14 @@ nunjucts.configure('views', {
   express: app
 })
 
+// set session
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: 60000 }
+}))
+
 // method override
 app.use(bodyParser.urlencoded())
 app.use(methodOverride(function(req, res) {
@@ -40,6 +50,7 @@ app.use(methodOverride(function(req, res) {
   }
 }));
 
+app.use(flash());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

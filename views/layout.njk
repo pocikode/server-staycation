@@ -43,6 +43,13 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
+          {% if alert %}
+            <div class="alert alert-{{ alert.status }}" role="alert">
+              {{ alert.message }}
+            </div>
+          {% endif %}
+
+
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">{{ pageTitle }}</h1>
 
