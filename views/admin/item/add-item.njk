@@ -18,7 +18,9 @@
         <label for="selectCategory">City</label>
         <select name="category" id="selectCategory" class="form-control" required>
           <option>--- Category ---</option>
-          <option value="1">Aap</option>
+          {% for category in categories %}
+            <option value="{{ category._id }}">{{ category.name }}</option>
+          {% endfor %}
         </select>
       </div>
       <div class="form-group">
