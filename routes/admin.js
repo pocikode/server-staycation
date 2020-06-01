@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { upload } = require('../middlewares/multer')
+const { upload, uploadMultiple } = require('../middlewares/multer')
 
 const dashboardController = require('../controllers/admin/dashboardController')
 const categoryController = require('../controllers/admin/categoryController')
@@ -20,6 +20,8 @@ router.post('/banks/:id', upload, bankController.update)
 router.delete('/banks/:id', bankController.delete)
 
 router.get('/items', itemController.index)
+router.post('/items', uploadMultiple, itemController.store)
+
 router.get('/booking', bookingController.index)
 
 module.exports = router
