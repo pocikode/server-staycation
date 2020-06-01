@@ -1,0 +1,38 @@
+<!-- Add Item Card -->
+<div class="card shadow mt-2">
+  <div class="card-body">
+    <form action="/admin/items" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="inputTitle">Title</label>
+        <input type="text" name="title" id="inputTitle" class="form-control" placeholder="Enter Title" required>
+      </div>
+      <div class="form-group">
+        <label for="inputPrice">Price</label>
+        <input type="number" name="price" id="inputPrice" class="form-control" placeholder="Enter Price" required>
+      </div>
+      <div class="form-group">
+        <label for="inputCity">City</label>
+        <input type="text" name="city" id="inputCity" class="form-control" placeholder="Enter City" required>
+      </div>
+      <div class="form-group">
+        <label for="selectCategory">City</label>
+        <select name="category" id="selectCategory" class="form-control" required>
+          <option>--- Category ---</option>
+          <option value="1">Aap</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="inputImage">Choose file...</label>
+        <input type="file" class="form-control-file" id="inputImage" name="image" required>
+      </div>
+      <div class="form-group">
+        <label for="inputDescription">Description</label>
+        <textarea name="description" id="inputDescription" class="form-control" required></textarea>
+      </div>
+      <div class="form-group text-left">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+
+  </div>
+</div>

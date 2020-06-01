@@ -1,29 +1,24 @@
 {% extends "../../layout.njk" %}
-{% set pageTitle = 'Item' %}
+{% set title = 'Item' %}
 
 {% block content %}
-  <!-- DataTales Example -->
-  <div class="card shadow mb-4">
-    <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Item Table</h6>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#showItems" role="tab" aria-controls="home" aria-selected="true">Item</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#addItem" role="tab" aria-controls="profile" aria-selected="false">Add Item</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="showItems" role="tabpanel" aria-labelledby="home-tab">
+      {% include "./item-table.njk" %}
     </div>
-    <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Title</th>
-              <th>Price</th>
-              <th>Country</th>
-              <th>City</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
+    <div class="tab-pane fade" id="addItem" role="tabpanel" aria-labelledby="profile-tab">
+      {% include "./add-item.njk" %}
     </div>
   </div>
+
 {% endblock content %}
 
 {% block styles %}
@@ -38,4 +33,10 @@
 
   <!-- Page level custom scripts -->
   <script src="/sb-admin-2/js/demo/datatables-demo.js"></script>
+  <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+  <script>
+    $(document).ready(function() {
+      CKEDITOR.replace('description')
+    })
+  </script>
 {% endblock scripts %}

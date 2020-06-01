@@ -19,7 +19,8 @@ const itemSchema = new mongoose.Schema({
     default: 'Indonesia'
   },
   is_popular: {
-    type: Boolean
+    type: Boolean,
+    default: false
   },
   description: {
     type: String,
