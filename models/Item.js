@@ -25,6 +25,10 @@ const itemSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  category: {
+    type: ObjectId,
+    ref: 'Category'
+  },
   images: [{
     type: ObjectId,
     ref: 'Image'
@@ -38,3 +42,5 @@ const itemSchema = new mongoose.Schema({
     ref: 'Activity'
   }]
 })
+
+module.exports = mongoose.model('Item', itemSchema)
