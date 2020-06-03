@@ -10,7 +10,14 @@ module.exports = {
       .populate('images', 'id url')
       .populate('category', 'id name')
 
-    res.render('admin/item/index', { categories, alert, items })
+    res.render('admin/item/index', { 
+      categories,
+      alert,
+      items,
+      stringify: (arr) => {
+        return JSON.stringify(arr)
+      }
+    })
   },
 
   store: async (req, res) => {

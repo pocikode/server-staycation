@@ -19,6 +19,7 @@
     </div>
   </div>
 
+  {% include "./modal-images.njk" %}
 {% endblock content %}
 
 {% block styles %}
@@ -35,8 +36,32 @@
   <script src="/sb-admin-2/js/demo/datatables-demo.js"></script>
   <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
   <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
       CKEDITOR.replace('description')
+
+      $('#showImages').on('show.bs.modal', e => {
+        let button = $(e.relatedTarget)
+
+        $(this).find('#showImagesModalLabel').text(button.data('title') + ' Images')
+
+        let images = button.data('images')
+        let appendImages = ''
+        for (i=0; i < images.length; i++) {
+          appendImages += `
+          <div class="col-md-4">
+            <div class="card shadow mb-4 mt-2">
+              <div class="card-body">
+                <img src="http://localhost:3002/${images[i].url}"
+                     alt="${button.data('title')}"
+                     style="width: 100%; display: block">
+              </div>
+            </div>
+          </div>
+          `
+        }
+
+        $(this).find('#showImagesBody').html(appendImages)
+      })
     })
   </script>
 {% endblock scripts %}

@@ -22,6 +22,9 @@
               <td>{{ item.country }}</td>
               <td>{{ item.city }}</td>
               <td>
+                <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#showImages" data-title="{{ item.title }}" data-images="{{ stringify(item.images) }}">
+                  <i class="fas fa-image"></i>
+                </button>
                 <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#editModal">
                   <i class="fas fa-edit"></i>
                 </button>
