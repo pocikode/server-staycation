@@ -1,0 +1,66 @@
+{% extends "../../layout.njk" %}
+{% set title = item.title %}
+
+{% block content %}
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#editForm" role="tab" aria-controls="home" aria-selected="true">Edit</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="editForm" role="tabpanel" aria-labelledby="home-tab">
+      <!-- Edit Item Card -->
+      <div class="card shadow mt-2">
+        <div class="card-body">
+          <form action="/admin/items/{{ item._id }}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="inputTitle">Title</label>
+              <input type="text" name="title" id="inputTitle" class="form-control" placeholder="Enter Title" required value="{{ item.title }}">
+            </div>
+            <div class="form-group">
+              <label for="inputPrice">Price</label>
+              <input type="number" name="price" id="inputPrice" class="form-control" placeholder="Enter Price" required value="{{ item.price }}">
+            </div>
+            <div class="form-group">
+              <label for="inputCity">City</label>
+              <input type="text" name="city" id="inputCity" class="form-control" placeholder="Enter City" required value="{{ item.city }}">
+            </div>
+            <div class="form-group">
+              <label for="selectCategory">Category</label>
+              <select name="category" id="selectCategory" class="form-control" required>
+                <option>
+                  --- Category ---
+                </option>
+                {% for category in categories %}
+                  <option value="{{ category._id }}" {% if category._id.equals(item.category._id) %} selected {% endif %}>{{ category.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="inputImage">Choose file...</label>
+              <input type="file" multiple class="form-control-file" id="inputImage" name="image" required>
+            </div>
+            <div class="form-group">
+              <label for="inputDescription">Description</label>
+              <textarea name="description" id="inputDescription" class="form-control" required>{{ item.description }}</textarea>
+            </div>
+            <div class="form-group text-left">
+              <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+  <script>
+    $(document).ready(function () {
+      CKEDITOR.replace('description')
+    })
+  </script>
+{% endblock scripts %}

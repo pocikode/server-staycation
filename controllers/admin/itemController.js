@@ -10,7 +10,7 @@ module.exports = {
       .populate('images', 'id url')
       .populate('category', 'id name')
 
-    res.render('admin/item/index', { 
+    res.render('admin/item/index', {
       categories,
       alert,
       items,
@@ -46,5 +46,25 @@ module.exports = {
       message: 'Success add item'
     })
     res.redirect('/admin/items')
+  },
+
+  edit: async (req, res) => {
+    let categories = await Category.find()
+    item = await Item.findOne({ _id: req.params.id })
+      .populate('images', 'id url')
+      .populate('category', 'id name')
+    if (!item) {
+      req.flash('alert', {
+        status: 'danger',
+        message: 'Item not found'
+      })
+
+      return res.redirect('/admin/items')
+    }
+
+    res.render('admin/item/edit', {
+      item,
+      categories
+    })
   }
 }

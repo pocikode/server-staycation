@@ -25,9 +25,9 @@
                 <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#showImages" data-title="{{ item.title }}" data-images="{{ stringify(item.images) }}">
                   <i class="fas fa-image"></i>
                 </button>
-                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#editModal">
+                <a href="/admin/items/{{ item._id }}/edit" class="btn btn-success btn-sm">
                   <i class="fas fa-edit"></i>
-                </button>
+                </a>
                 <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#deleteModal">
                   <i class="fas fa-trash"></i>
                 </button>

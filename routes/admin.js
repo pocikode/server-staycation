@@ -21,6 +21,7 @@ router.delete('/banks/:id', bankController.delete)
 
 router.get('/items', itemController.index)
 router.post('/items', uploadMultiple, itemController.store)
+router.get('/items/:id/edit', itemController.edit)
 
 router.get('/booking', bookingController.index)
 
