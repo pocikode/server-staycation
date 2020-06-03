@@ -6,8 +6,11 @@ module.exports = {
   index: async (req, res) => {
     let categories = await Category.find()
     let alert = req.flash('alert')[0]
+    let items = await Item.find()
+      .populate('images', 'id url')
+      .populate('category', 'id name')
 
-    res.render('admin/item/index', { categories, alert })
+    res.render('admin/item/index', { categories, alert, items })
   },
 
   store: async (req, res) => {

@@ -13,6 +13,25 @@
             <th>Action</th>
           </tr>
         </thead>
+        <tbody>
+          {% for item in items %}
+            <tr>
+              <td>{{ loop.index }}</td>
+              <td>{{ item.title }}</td>
+              <td>$ {{ item.price }}</td>
+              <td>{{ item.country }}</td>
+              <td>{{ item.city }}</td>
+              <td>
+                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#editModal">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#deleteModal">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
       </table>
     </div>
   </div>
